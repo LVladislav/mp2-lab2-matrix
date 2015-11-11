@@ -100,7 +100,7 @@ TVector<ValType>::~TVector()
 template <class ValType> // доступ
 ValType& TVector<ValType>::operator[](int pos)
 {
-	if ((pos<0) || (pos>Size) || (pos > MAX_VECTOR_SIZE))
+	if ((pos < 0) || (pos >= (Size + StartIndex)))
 	{
 		throw "can_create_vector_with_positive_length";
 	}
