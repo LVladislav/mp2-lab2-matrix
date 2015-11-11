@@ -1,37 +1,46 @@
 #include "utmatrix.h"
 
 #include <gtest.h>
-/* 
-TEST(TMatrix, can_create_matrix_with_positive_length)
+
+/*TEST(TMatrix, can_create_matrix_with_positive_length) // можно создавать матрицы продолжительной длины
 {
   ASSERT_NO_THROW(TMatrix<int> m(5));
 }
 
-TEST(TMatrix, cant_create_too_large_matrix)
+TEST(TMatrix, cant_create_too_large_matrix) // не может создать матрицы слишком большой длины
 {
   ASSERT_ANY_THROW(TMatrix<int> m(MAX_MATRIX_SIZE + 1));
 }
 
-TEST(TMatrix, throws_when_create_matrix_with_negative_length)
+TEST(TMatrix, throws_when_create_matrix_with_negative_length) // отбрасывает, когда сощдаются матрицы отрицательной длины
 {
   ASSERT_ANY_THROW(TMatrix<int> m(-5));
 }
 
-TEST(TMatrix, can_create_copied_matrix)
+TEST(TMatrix, can_create_copied_matrix) // создает скопированную матрицу
 {
   TMatrix<int> m(5);
 
   ASSERT_NO_THROW(TMatrix<int> m1(m));
 }
 
-TEST(TMatrix, copied_matrix_is_equal_to_source_one)
+TEST(TMatrix, copied_matrix_is_equal_to_source_one) //скопировал матрицу в первый источник
 {
-  ADD_FAILURE();
+  //ADD_FAILURE();
+	TMatrix<int> m(5);
+	m[0][0] = 1;
+	TMatrix<int> m1(m);
+	EXPECT_EQ(m, m1);
 }
 
-TEST(TMatrix, copied_matrix_has_its_own_memory)
+TEST(TMatrix, copied_matrix_has_its_own_memory) // копирует матрицу, имеющую собственную память
 {
-  ADD_FAILURE();
+ // ADD_FAILURE();
+	TMatrix<int> m(5);
+	m[0][0] = 1;
+	TMatrix<int> m1(m);
+	m[0][0] = 2;
+	EXPECT_EQ(m[0][0], m1[0][0]);
 }
 
 TEST(TMatrix, can_get_size)
