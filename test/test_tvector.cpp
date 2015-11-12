@@ -77,9 +77,9 @@ TEST(TVector, can_set_and_get_element) // можем получить и установить элемент
 TEST(TVector, throws_when_set_element_with_negative_index) //выбрасывает при установке элмента с отрицательным индексом
 {
  // ADD_FAILURE();
-	/*TVector<int> v(5);
-	ASSERT_ANY_THROW(v[-1] = 5;);
-	*/
+	TVector<int> v(5);
+	ASSERT_ANY_THROW(v[-1] = 2);
+	
 }
 
 TEST(TVector, throws_when_set_element_with_too_large_index) // выбрасывает, при установке элемента с большим индексом
@@ -155,26 +155,28 @@ TEST(TVector, vectors_with_different_size_are_not_equal) // вектора с различными
 TEST(TVector, can_add_scalar_to_vector) // можем прибавить скаляр к вектору
 {
   //ADD_FAILURE();
-
+	TVector<int> v(3);
+	int skal=2;
+	v = v + skal;
+	ASSERT_NO_THROW(v);
 }
 
 TEST(TVector, can_subtract_scalar_from_vector) // можем вычесть скаляр от вектора
 {
  // ADD_FAILURE();
-
+	TVector<int> v(3);
+	int skal = 2;
+	v = v - skal;
+	ASSERT_NO_THROW(v);
 }
 
 TEST(TVector, can_multiply_scalar_by_vector) // умножить скаляр на вектор
 {
   //ADD_FAILURE();
-	TVector<int> v(5);
+	TVector<int> v(3);
 	int skal = 2;
-	TVector<int> res;
-	for (int i = 0; i < 5; i++)
-	{
-		res = v*skal;
-	}
-	EXPECT_EQ(res, v*skal);
+	v = v * skal;
+	ASSERT_NO_THROW(v);
 }
 
 TEST(TVector, can_add_vectors_with_equal_size) // можем сложить векторы одинаковые по размеру

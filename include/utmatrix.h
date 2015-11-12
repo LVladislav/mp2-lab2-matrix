@@ -280,6 +280,10 @@ TMatrix<ValType>::TMatrix(int s): TVector<TVector<ValType> >(s)
 	{
 		pVector[i] = new ValType[Size]; //создается массив для каждой строки
 	}*/
+	if ((s<0) || (s>MAX_MATRIX_SIZE))
+	{
+		throw "out_of_range";
+	}
 	for (int i = 0; i < Size; i++)
 	{
 		pVector[i] = TVector<ValType>(s - i, i);
