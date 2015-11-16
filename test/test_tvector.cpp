@@ -123,10 +123,15 @@ TEST(TVector, assign_operator_change_vector_size)  //изменить размер вектора
 
 }
 
-TEST(TVector, can_assign_vectors_of_different_size) // назначить вектор разногo оразмера
+TEST(TVector, can_assign_vectors_of_different_size) // назначить вектор разногo размера
 {
   //ADD_FAILURE();
-	
+	/*TVector<int> v(5);
+	TVector<int> v1(7);
+	v = v1;
+	TVector<int> v2(v1);
+	EXPECT_EQ(v, v2);*/
+
 }
 
 TEST(TVector, compare_equal_vectors_return_true) // сравниваем равные вектора и возвращаем True

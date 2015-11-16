@@ -255,32 +255,27 @@ public:
   // ввод / вывод
   friend istream& operator>>(istream &in, TMatrix &mt)
   {
-    for (int i = 0; i < mt.Size; i++)
-      in >> mt.pVector[i];
-    return in;
+	  for (int i = 0; i < mt.Size; i++)
+	  {
+		  in >> mt.pVector[i];
+	  }
+	  return in;
   }
   friend ostream & operator<<( ostream &out, const TMatrix &mt)
   {
-    for (int i = 0; i < mt.Size; i++)
-      out << mt.pVector[i] << endl;
-    return out;
+	  for (int i = 0; i < mt.Size; i++)
+	  {
+		  cout << "\t";
+		  out << mt.pVector[i] << endl;
+	  }
+	  return out;
   }
 };
 
 template <class ValType>
 TMatrix<ValType>::TMatrix(int s): TVector<TVector<ValType> >(s)
 {
-	/*if ((s<0) || (s>MAX_MATRIX_SIZE))
-	{
-		throw "out_of_range";
-	}
-	Size = s.Size;
-	pVector = new TVector<ValType>[Size]; // выделяем память для матрицы, вектор в котором лежат строки
-	for (int i = 0; i < Size; i++)
-	{
-		pVector[i] = new ValType[Size]; //создается массив для каждой строки
-	}*/
-	if ((s<0) || (s>MAX_MATRIX_SIZE))
+	if ((s < 0) || (s > MAX_MATRIX_SIZE))
 	{
 		throw "out_of_range";
 	}
@@ -304,8 +299,8 @@ TMatrix<ValType>::TMatrix(const TMatrix<ValType> &mt): TVector<TVector<ValType> 
 template <class ValType> // конструктор преобразования типа
 TMatrix<ValType>::TMatrix(const TVector<TVector<ValType> > &mt): TVector<TVector<ValType> >(mt)
 {
-
-
+	Size = mt;
+	pVector = new TVector<ValType>[Size];
 }
 
 template <class ValType> // сравнение

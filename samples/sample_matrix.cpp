@@ -15,21 +15,20 @@ void main()
   int i, j;
 
   setlocale(LC_ALL, "Russian");
-  cout << "Тестирование программ поддержки представления треугольных матриц"
-    << endl;
+  cout << "Тестирование программ поддержки представления треугольных матриц"<< endl;
 
-  /*TVector<int> a(5), b(5), c;
+  /*TVector<int> A(5), B(5), C;
   cout << "Input vector a: ";
-  cin >> a;
+  cin >> A;
   cout << "Input vector b: ";
-  cin >> b;
-  c = a + b;
-  cout << "a+b= " << c << endl;
-  c = a - b;
-  cout << "a-b= " << c << endl;
-  int z = a * b;
-  cout << "a*b= " << z << endl;
-  if (a == b)
+  cin >> B;
+  C = A + B;
+  cout << "a+b= " << C << endl;
+  C = A - B;
+  cout << "a-b= " << C << endl;
+  int Z = A * B;
+  cout << "a*b= " << Z << endl;
+  if (A == B)
   {
 	  cout << "Верно!\n";
   }
@@ -37,7 +36,7 @@ void main()
   {
 	  cout << "Не верно!\n";
   }
-  if (a != b)
+  if (A != B)
   {
 	  cout << "Верно!\n";
   }
@@ -45,14 +44,15 @@ void main()
   {
 	  cout << "Не верно!\n";
   }
-  c = a + 2;
-  cout << "a+2= " << c<<endl;
-  c = b - 2;
-  cout << "b-2= " << c<<endl;
-  c = a * 2;
-  cout << "a*2= " << c << endl;
+  C = A + 2;
+  cout << "a+2= " << C << endl;
+  C = B - 2;
+  cout << "b-2= " << C << endl;
+  C = A * 2;
+  cout << "a*2= " << C << endl;
   */
-
+  cout << endl;
+  cout << endl;
   TMatrix<int> a(5), b(5), c(5);
   for (i = 0; i < 5; i++)
     for (j = i; j < 5; j++ )
