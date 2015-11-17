@@ -292,7 +292,7 @@ TMatrix<ValType>::TMatrix(const TMatrix<ValType> &mt): TVector<TVector<ValType> 
 	pVector = new TVector<ValType>[Size];
 	for (int i = 0; i < Size; i++)
 	{
-		pVector[i] = TVector<ValType>(mt.pVector[i]); //либо TVector<ValType>(mp[i]);
+		pVector[i] = TVector<ValType>(mt.pVector[i]); 
 	}
 }
 
@@ -358,13 +358,6 @@ template <class ValType> // сложение
 TMatrix<ValType> TMatrix<ValType>::operator+(const TMatrix<ValType> &mt)
 {
 	TMatrix res(Size);
-	/*for (int i = 0; i < Size; i++)
-	{
-		for (int j = 0; j < Size; j++)
-		{
-			res[i][j] = res[i][j] + mt.pVector[i][j];
-		}
-	}*/
 	for (int i = 0; i < Size; i++)
 	{
 		res.pVector[i] = pVector[i] + mt.pVector[i];
@@ -376,13 +369,6 @@ template <class ValType> // вычитание
 TMatrix<ValType> TMatrix<ValType>::operator-(const TMatrix<ValType> &mt)
 {
 	TMatrix res(Size);
-	/*for (int i = 0; i < Size; i++)
-	{
-		for (int j = 0; j < Size; j++)
-		{
-			res[i][j] = res[i][j] - mt.pVector[i][j];
-		}
-	}*/
 	for (int i = 0; i < Size; i++)
 	{
 		res.pVector[i] = pVector[i] - mt.pVector[i];
