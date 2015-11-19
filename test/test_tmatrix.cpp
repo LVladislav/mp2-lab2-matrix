@@ -28,13 +28,16 @@ TEST(TMatrix, copied_matrix_is_equal_to_source_one) //скопировал матрицу в первы
 {
   //ADD_FAILURE();
 	TMatrix<int> m(3);
-	m[0][0] = 1;
+	/*m[0][0] = 1;
 	m[0][1] = 2;
 	m[0][2] = 3;
 	m[1][1] = 4;
 	m[1][2] = 5;
-	m[2][2] = 6;
-
+	m[2][2] = 6;*/
+	for (int i = 0; i < 3; i++)
+	{
+		m[i][i] = i;
+	}
 	TMatrix<int> m1(m);
 	EXPECT_EQ(m1,m);
 }
@@ -43,8 +46,10 @@ TEST(TMatrix, copied_matrix_has_its_own_memory) // копирует матрицу, имеющую соб
 {
  // ADD_FAILURE();
 	TMatrix<int> m(5);
+	m[1][2] = 3;
 	TMatrix<int> m1(m);
-	EXPECT_EQ(m[0][0],m1[0][0]);
+	m1[1][2] = 4;
+	EXPECT_NE(m[1][2],m1[1][2]);
 }
 
 TEST(TMatrix, can_get_size) // можем получить размер
@@ -60,7 +65,6 @@ TEST(TMatrix, can_set_and_get_element) //можно установить и получить элемент
  //ADD_FAILURE();
 	TMatrix<int> m(3);
 	m[0][0] = 1;
-	m[0][0];
 	EXPECT_EQ(m[0][0] = 1, m[0][0]);
 }
 
@@ -68,26 +72,30 @@ TEST(TMatrix, throws_when_set_element_with_negative_index) //выкидывает, при уст
 {
  // ADD_FAILURE();
 	TMatrix<int> m(3);
-	EXPECT_ANY_THROW(m[0][-1] = 3);
+	ASSERT_ANY_THROW(m[1][-1] = 3);
 }
 
 TEST(TMatrix, throws_when_set_element_with_too_large_index) // выкидывать, при установке слишком большого индекса
 {
   //ADD_FAILURE();
 	TMatrix<int> m(5);
-	EXPECT_ANY_THROW(m[3][25] = 6);
+	ASSERT_ANY_THROW(m[3][5] = 6);
 }
 
 TEST(TMatrix, can_assign_matrix_to_itself) // матрица может присваиваться сама себе
 {
   //ADD_FAILURE();
 	TMatrix<int> m(3);
-	m[0][0] = 1;
+	/*m[0][0] = 1;
 	m[0][1] = 2;
 	m[0][2] = 3;
 	m[1][1] = 4;
 	m[1][2] = 5;
-	m[2][2] = 6;
+	m[2][2] = 6;*/
+	for (int i = 0; i < 3; i++)
+	{
+		m[i][i] = i;
+	}
 	ASSERT_NO_THROW(m = m);
 }
 
@@ -95,19 +103,30 @@ TEST(TMatrix, can_assign_matrices_of_equal_size) // можем присвать матрицы одина
 {
   //ADD_FAILURE();
 	TMatrix<int> m(3);
-	m[0][0] = 1;
+	/*m[0][0] = 1;
 	m[0][1] = 2;
 	m[0][2] = 3;
 	m[1][1] = 4;
 	m[1][2] = 5;
-	m[2][2] = 6;
+	m[2][2] = 6;*/
+	for (int i = 0; i < 3; i++)
+	{
+		m[i][i] = i;
+	}
 	TMatrix<int> m1(3);
 	ASSERT_NO_THROW(m1 = m);
 }
 
 TEST(TMatrix, assign_operator_change_matrix_size) //назначить оператору матрицу измененного размера
 {
-  ADD_FAILURE();
+  //ADD_FAILURE();
+	TMatrix<int> m(5);
+	TMatrix<int> m1(7);
+	for (int i = 0; i < 5; i++)
+	{
+		m[i][i] = i;
+	}
+	ASSERT_NO_THROW(m1 = m);
 }
 
 TEST(TMatrix, can_assign_matrices_of_different_size) // можем присвоить матрицы разного размера
@@ -115,12 +134,16 @@ TEST(TMatrix, can_assign_matrices_of_different_size) // можем присвоить матрицы 
  // ADD_FAILURE();
 	TMatrix<int> m(3);
 	TMatrix<int> m1(4);
-	m[0][0] = 1;
+	/*m[0][0] = 1;
 	m[0][1] = 2;
 	m[0][2] = 3;
 	m[1][1] = 4;
 	m[1][2] = 5;
-	m[2][2] = 6;
+	m[2][2] = 6;*/
+	for (int i = 0; i < 3; i++)
+	{
+		m[i][i] = i;
+	}
 	ASSERT_NO_THROW(m1 = m);
 }
 
@@ -129,22 +152,28 @@ TEST(TMatrix, compare_equal_matrices_return_true) // сравниваем матрицы и возвра
  // ADD_FAILURE();
 	TMatrix<int> m(3);
 	TMatrix<int> m1(3);
-	EXPECT_NO_THROW(m1 = m);
+	m[1][1] = 4;
+	m1[1][1] = 4;
+	ASSERT_TRUE(m == m1);
+	
 }
 
 TEST(TMatrix, compare_matrix_with_itself_return_true) // сравниваем матрицу с  самой собой и возвращаем TRUE
 {
   //ADD_FAILURE();
 	TMatrix<int> m(3);
-	EXPECT_EQ(m == m, true);
+	m[1][1] = 4;
+	ASSERT_TRUE(m == m);
 }
 
-TEST(TMatrix, matrices_with_different_size_are_not_equal) // матрицы с ращличными ращмерами не равны
+TEST(TMatrix, matrices_with_different_size_are_not_equal) // матрицы с различными размерами не равны
 {
   //ADD_FAILURE();
 	TMatrix<int> m(5);
 	TMatrix<int> m1(3);
-	EXPECT_NO_THROW(m1 != m);
+	m[1][1] = 4;
+	m1[1][1] = 4;
+	EXPECT_NE(m, m1);
 }
 
 TEST(TMatrix, can_add_matrices_with_equal_size) //можем сложить матрицы одинакового размера
@@ -152,7 +181,9 @@ TEST(TMatrix, can_add_matrices_with_equal_size) //можем сложить матрицы одинаков
   //ADD_FAILURE()
 	TMatrix<int> m(3);
 	TMatrix<int> m1(3);
-	EXPECT_NO_THROW(m + m1);
+	m[1][1] = 4;
+	m1[1][1] = 4;
+	ASSERT_NO_THROW(m+m1);
 
 }
 
@@ -161,6 +192,8 @@ TEST(TMatrix, cant_add_matrices_with_not_equal_size) // можем сложить матрицы ра
 	//ADD_FAILURE();
 	TMatrix<int> m(3);
 	TMatrix<int> m1(5);
+	m[1][1] = 4;
+	m1[2][2] = 4;
 	EXPECT_ANY_THROW(m + m1);
 }
 
@@ -169,6 +202,8 @@ TEST(TMatrix, can_subtract_matrices_with_equal_size) // можем вычесть матрицы од
  // ADD_FAILURE();
 	TMatrix<int> m(5);
 	TMatrix<int> m1(5);
+	m[1][1] = 4;
+	m1[1][1] = 4;
 	EXPECT_NO_THROW(m - m1);
 }
 
@@ -177,5 +212,7 @@ TEST(TMatrix, cant_subtract_matrixes_with_not_equal_size) // можем вычесть матри
   //ADD_FAILURE();
 	TMatrix<int> m(5);
 	TMatrix<int> m1(3);
+	m[1][1] = 4;
+	m1[2][2] = 4;
 	EXPECT_ANY_THROW(m - m1);
 }
