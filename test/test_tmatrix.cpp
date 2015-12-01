@@ -28,12 +28,6 @@ TEST(TMatrix, copied_matrix_is_equal_to_source_one) //скопировал матрицу в первы
 {
   //ADD_FAILURE();
 	TMatrix<int> m(3);
-	/*m[0][0] = 1;
-	m[0][1] = 2;
-	m[0][2] = 3;
-	m[1][1] = 4;
-	m[1][2] = 5;
-	m[2][2] = 6;*/
 	for (int i = 0; i < 3; i++)
 	{
 		m[i][i] = i;
