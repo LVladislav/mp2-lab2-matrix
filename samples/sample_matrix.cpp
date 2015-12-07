@@ -7,13 +7,14 @@
 
 #include <iostream>
 #include "utmatrix.h"
+#include <time.h>
 //---------------------------------------------------------------------------
 
 void main()
 {
   
   int i, j;
-
+  clock_t time;
   setlocale(LC_ALL, "Russian");
   cout << "Тестирование программ поддержки представления треугольных матриц"<< endl;
 
@@ -53,17 +54,22 @@ void main()
   */
   cout << endl;
   cout << endl;
-  TMatrix<int> a(5), b(5), c(5);
-  for (i = 0; i < 5; i++)
-    for (j = i; j < 5; j++ )
+  TMatrix<int> a(10), b(10), c(10);
+  time = clock();
+  for (i = 0; i < 10; i++)
+    for (j = i; j < 10; j++ )
     {
       a[i][j] =  i * 10 + j;
-      b[i][j] = (i * 10 + j) * 100;
+      b[i][j] = (i * 10 + j) * 10;
+   time = clock() - time;
     }
   c = a + b;
+
   cout << "Matrix a = " << endl << a << endl;
   cout << "Matrix b = " << endl << b << endl;
   cout << "Matrix c = a + b" << endl << c << endl;
+  
+  printf("time=%f\n", (double)time / CLOCKS_PER_SEC);
   
 }
 //---------------------------------------------------------------------------
